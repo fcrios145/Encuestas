@@ -17,13 +17,13 @@
         <h1 class="cover-heading">Selecciona tu g&eacute;nero</h1>
         <div class="row">
             <div class="col-md-6">
-                <a href="{% url 'edad' %}?g=h">
+                <a class="genero" id="hombre" href="#">
                     <img src="{{ STATIC_URL }}/img/hombre.png" alt=""/>
                     <h2>Masculino</h2>
                 </a>
             </div>
             <div class="col-md-6">
-                <a href="{% url 'edad' %}?g=m">
+                <a class="genero" id="mujer" href="#">
                     <img src="{{ STATIC_URL }}/img/mujer.png" alt=""/>
                     <h2>Femenino</h2>
                 </a>
@@ -31,6 +31,16 @@
 
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $('.genero').on('click', funcion);
+        function funcion() {
+            var valor = $(this).attr('id');
+            console.log(valor);
+        }
+    </script>
 {% endblock %}
 
     <a href="#">

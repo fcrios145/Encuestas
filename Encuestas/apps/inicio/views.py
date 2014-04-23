@@ -24,3 +24,6 @@ class edad(TemplateView):
         context = super(edad, self).get_context_data(**kwargs)
         self.request.session["genero"] =self.request.GET.get('g','h')
         return context
+
+class genero2(TemplateView):
+    template_name = 'inicio/sexo.html'
