@@ -21,4 +21,5 @@ class genero(TemplateView):
         return context
 
 
-
+class edad(TemplateView):
+    template_name = 'inicio/edad.html'
