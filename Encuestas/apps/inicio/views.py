@@ -15,11 +15,12 @@ class index(TemplateView):
 
 class genero(TemplateView):
     template_name = 'inicio/sexo.html'
-    def get_context_data(self, **kwargs):
-        context = super(genero, self).get_context_data(**kwargs)
-        self.request.session["genero"] =self.request.GET.get('g','h')
-        return context
+
 
 
 class edad(TemplateView):
     template_name = 'inicio/edad.html'
+    def get_context_data(self, **kwargs):
+        context = super(edad, self).get_context_data(**kwargs)
+        self.request.session["genero"] =self.request.GET.get('g','h')
+        return context

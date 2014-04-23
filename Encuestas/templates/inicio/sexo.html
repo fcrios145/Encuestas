@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block estilos %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
     <style>
     body {
                 padding-top: 50px;
@@ -18,13 +17,13 @@
         <h1 class="cover-heading">Selecciona tu g&eacute;nero</h1>
         <div class="row">
             <div class="col-md-6">
-                <a href="{% url 'genero' %}?g=h">
+                <a href="{% url 'edad' %}?g=h">
                     <img src="{{ STATIC_URL }}/img/hombre.png" alt=""/>
                     <h2>Masculino</h2>
                 </a>
             </div>
             <div class="col-md-6">
-                <a href="{% url 'genero' %}?g=m">
+                <a href="{% url 'edad' %}?g=m">
                     <img src="{{ STATIC_URL }}/img/mujer.png" alt=""/>
                     <h2>Femenino</h2>
                 </a>
