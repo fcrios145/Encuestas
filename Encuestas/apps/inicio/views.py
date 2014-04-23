@@ -10,8 +10,15 @@ class index(TemplateView):
 
     # def get_context_data(self, **kwargs):
     #     context = super(index, self).get_context_data(**kwargs)
-    #     # context['latest_articles'] = Article.objects.all()[:5]
     #     self.request.session["fav_color"] = "blue"
     #     return context
+
+class genero(TemplateView):
+    template_name = 'inicio/sexo.html'
+    def get_context_data(self, **kwargs):
+        context = super(genero, self).get_context_data(**kwargs)
+        self.request.session["genero"] =self.request.GET.get('g','h')
+        return context
+
 
 
