@@ -32,7 +32,7 @@ class edad(TemplateView):
 
         datos = []
         valor = 15
-        for x in range(15, 43):
+        for x in range(15, 39):
             datos.append(
                 dict(
                     [
@@ -41,11 +41,12 @@ class edad(TemplateView):
                 )
             )
             valor += 1
-        print datos
         return render_to_response('inicio/edad_ajax.html', {"edades": datos})
-
-
         # return render_to_response('inicio/edad_ajax.html')
         # return render_to_response('inicio/edad_ajax.html', {"data": "hola"})
 
-
+class Carrera(TemplateView):
+    def get(self, request, *args, **kwargs):
+        edad = request.GET['edad']
+        self.request.session["edad"] = edad
+        print edad
