@@ -28,5 +28,24 @@ class edad(TemplateView):
         genero = request.GET['genero']
         self.request.session["genero"] = genero
         print self.request.session["genero"]
-        return render_to_response('inicio/edad_ajax.html')
+        #
+
+        datos = []
+        valor = 15
+        for x in range(15, 43):
+            datos.append(
+                dict(
+                    [
+                        ('edad', valor)
+                    ]
+                )
+            )
+            valor += 1
+        print datos
+        return render_to_response('inicio/edad_ajax.html', {"edades": datos})
+
+
+        # return render_to_response('inicio/edad_ajax.html')
+        # return render_to_response('inicio/edad_ajax.html', {"data": "hola"})
+
 
