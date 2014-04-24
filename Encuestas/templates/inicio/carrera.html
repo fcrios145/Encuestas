@@ -1,9 +1,18 @@
 {% for carrera in carreras %}
         <div class="col-lg-4">
-            <a href="#">
+            <a class="carrera" href="#">
                 <img src="/media/{{ carrera.imagen }}" alt="imagen"/>
                 <h4>{{ carrera.nombre }}</h4>
             </a>
         </div>
 {% endfor %}
 
+{% block js %}
+    <script>
+        $('.carrera').on('click', siguiente);
+        function siguiente() {
+            console.log('entro');
+            var carrera = $(this).find('h4').text();
+        }
+    </script>
+{% endblock %}
