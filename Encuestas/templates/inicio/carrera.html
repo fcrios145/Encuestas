@@ -1,0 +1,9 @@
+{% for carrera in carreras %}
+        <div class="col-lg-4">
+            <a href="#">
+                <img src="/media/{{ carrera.imagen }}" alt="imagen"/>
+                <h4>{{ carrera.nombre }}</h4>
+            </a>
+        </div>
+{% endfor %}
+

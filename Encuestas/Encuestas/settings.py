@@ -99,3 +99,7 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     RUTA_PROYECTO.child('templates')
 )
+
+MEDIA_ROOT = RUTA_PROYECTO.child('media')
+
+MEDIA_URL =  "/media/"

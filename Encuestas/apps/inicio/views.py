@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
+from .models import Carrera
 # Create your views here.
 
 # def index(request):
@@ -45,8 +46,9 @@ class edad(TemplateView):
         # return render_to_response('inicio/edad_ajax.html')
         # return render_to_response('inicio/edad_ajax.html', {"data": "hola"})
 
-class Carrera(TemplateView):
+class carrera(TemplateView):
     def get(self, request, *args, **kwargs):
         edad = request.GET['edad']
         self.request.session["edad"] = edad
-        print edad
+        datos = Carrera.objects.all()
+        return render_to_response('inicio/carrera.html', {'carreras': datos})

@@ -34,6 +34,12 @@
                 data: {'edad': edad},
                 url: '{% url 'carrera' %}',
                 type: 'get',
+                success:function(data) {
+                    $('.ajax2').slideUp('slow')
+                    $('.ajax2').hide();
+                    $('.ajax2').html(data);
+                    $('.ajax2').fadeIn('slow');
+                }
 
             });
 
