@@ -5,31 +5,36 @@
 
 {% block estilos %}
     <style>
-    body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
     </style>
 {% endblock %}
 
 {% block contenido %}
-    <div class="site-wrapper">
-        <h1 class="cover-heading">Selecciona tu g&eacute;nero</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <a class="genero" id="hombre" href="#">
-                    <img src="{{ STATIC_URL }}/img/hombre.png" alt=""/>
-                    <h2>Masculino</h2>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a class="genero" id="mujer" href="#">
-                    <img src="{{ STATIC_URL }}/img/mujer.png" alt=""/>
-                    <h2>Femenino</h2>
-                </a>
-            </div>
+    <div class="ajax">
+        <div class="site-wrapper">
+            <h1 class="cover-heading">Selecciona tu g&eacute;nero</h1>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="genero" id="hombre" href="#">
+                        <img src="{{ STATIC_URL }}/img/hombre.png" alt=""/>
+                        <h2>Masculino</h2>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a class="genero" id="mujer" href="#">
+                        <img src="{{ STATIC_URL }}/img/mujer.png" alt=""/>
+                        <h2>Femenino</h2>
+                    </a>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="ajax2">
+
     </div>
 {% endblock %}
 
@@ -37,13 +42,23 @@
     <script>
         $('.genero').on('click', funcion);
         function funcion() {
-            var valor = $(this).attr('id');
-            console.log(valor);
+            var genero = $(this).attr('id');
+            $.ajax({
+                data: {'genero': genero},
+                url: '{% url 'edad' %}',
+                type: 'get',
+                success: function(data) {
+                    $('.ajax').slideUp('slow');
+                    $('.ajax2').hide();
+                    $('.ajax2').html(data);
+                    $('.ajax2').fadeIn('slow');
+                }
+            });
         }
     </script>
 {% endblock %}
 
-    <a href="#">
-        <legend >Caption</legend>
-        <img class="thumbnail" src="http://placehold.it/140x90" alt="">
-    </a>
+<a href="#">
+    <legend>Caption</legend>
+    <img class="thumbnail" src="http://placehold.it/140x90" alt="">
+</a>

@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 # Create your views here.
 
@@ -18,12 +18,15 @@ class genero(TemplateView):
 
 
 
-class edad(TemplateView):
-    template_name = 'inicio/edad.html'
-    def get_context_data(self, **kwargs):
-        context = super(edad, self).get_context_data(**kwargs)
-        self.request.session["genero"] =self.request.GET.get('g','h')
-        return context
 
-class genero2(TemplateView):
-    template_name = 'inicio/sexo.html'
+class edad(TemplateView):
+    # def get_context_data(self, **kwargs):
+    #     context = super(edad, self).get_context_data(**kwargs)
+    #     self.request.session["genero"] =self.request.GET.get('g','h')
+    #     return context
+    def get(self, request, *args, **kwargs):
+        genero = request.GET['genero']
+        self.request.session["genero"] = genero
+        print self.request.session["genero"]
+        return render_to_response('inicio/edad_ajax.html')
+
