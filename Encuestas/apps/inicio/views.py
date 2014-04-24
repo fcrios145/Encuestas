@@ -52,3 +52,9 @@ class carrera(TemplateView):
         self.request.session["edad"] = edad
         datos = Carrera.objects.all()
         return render_to_response('inicio/carrera.html', {'carreras': datos})
+
+class preguntas(TemplateView):
+    def get(self, request, *args, **kwargs):
+        carrera = request.GET['carrera']
+        self.request.session['carrera'] = carrera
+        return render_to_response(('inicio/preguntas.html'))

@@ -1,0 +1,20 @@
+{% block estilos %}
+
+{% endblock %}
+
+<div class="your-clock">
+
+</div>
+
+<div class="preguntas">
+    <h2></h2>
+</div>
+
+{% block js %}
+
+    <script>
+        var clock = new FlipClock($('.your-clock'), {
+            //Opciones de cronometro
+        });
+    </script>
+{% endblock %}

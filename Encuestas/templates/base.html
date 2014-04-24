@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/flipclock.css"/>
     {% block estilos %}
 
     {% endblock %}
@@ -35,6 +36,10 @@
 <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
 
 <script src="{{ STATIC_URL }}js/main.js"></script>
+
+{#Reloj#}
+<script src="{{ STATIC_URL }}js/prefixfree.min.js"></script>
+<script src="{{ STATIC_URL }}js/flipclock.min.js"></script>
 
 {% block js %}
 

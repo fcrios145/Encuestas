@@ -11,8 +11,16 @@
     <script>
         $('.carrera').on('click', siguiente);
         function siguiente() {
-            console.log('entro');
             var carrera = $(this).find('h4').text();
+            console.log('entro: ' + carrera);
+            $.ajax({
+                data: {'carrera':carrera},
+                url: '{% url 'preguntas' %}',
+                type: 'get',
+                success:function(data) {
+                    $('.ajax2').html(data);
+                }
+            });
         }
     </script>
 {% endblock %}
