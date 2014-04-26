@@ -9,9 +9,16 @@ class Carrera(models.Model):
     def __unicode__(self):
         return self.nombre
 
-class Catalogo(models.Model):
-    nombre = models.CharField(max_length=70)
-    descripcion = models.TextField(blank=True)
+
+
+class Respuesta(models.Model):
+    texto = models.TextField()
+    imagen = models.ImageField(upload_to='imagen_respuestas')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.texto
 
 
 class Pregunta(models.Model):
@@ -19,28 +26,21 @@ class Pregunta(models.Model):
     imagen = models.ImageField(upload_to='imagen_preguntas')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    catalogo = models.ForeignKey(Catalogo)
+    respuestas = models.ManyToManyField(Respuesta)
 
     def __unicode__(self):
         return self.texto
+
+class Catalogo(models.Model):
+    nombre = models.CharField(max_length=70)
+    descripcion = models.TextField(blank=True)
+    preguntas = models.ManyToManyField(Pregunta)
+
+    def __unicode__(self):
+        return self.nombre
 
 class Persona(models.Model):
     carrera = models.ForeignKey(Carrera)
     genero = models.BooleanField(default=True)
     edad = models.IntegerField()
-
-class Respuesta(models.Model):
-    texto = models.TextField()
-    imagen = models.ImageField(upload_to='imagen_respuestas')
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    pregunta = models.ForeignKey(Pregunta)
-
-    def __unicode(self):
-        return self.texto
-
-class Dato(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    persona = models.OneToOneField(Persona)
 
